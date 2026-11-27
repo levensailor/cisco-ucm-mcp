@@ -1,0 +1,11 @@
+site_name: "Cisco UCM MCP"
+site_description: "MCP server that answers Cisco UCM questions about phone registration, AXL data, and service status."
+site_url: https://cisco-ucm-mcp.docs.presidio.solutions/en/latest/
+repo_url: "https://github.com/levensailor/ucm-mcp"
+repo_name: "ucm-mcp"
+edit_uri: "edit/main/docs/"
+theme:
+  name: readthedocs
+nav:
+  - Home: index.md
+  - README: readme.md
