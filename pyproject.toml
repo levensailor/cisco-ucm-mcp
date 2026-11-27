@@ -1,5 +1,5 @@
 [project]
-name = "ucm-mcp"
+name = "cisco-ucm-mcp"
 version = "0.1.0"
 description = "MCP server for Cisco Unified Communications Manager (AXL, RIS, Serviceability, Phone XSI)"
 readme = "README.md"
@@ -20,6 +20,7 @@ dependencies = [
 
 [project.scripts]
 ucm-mcp = "ucm_mcp.server:main"
+cisco-ucm-mcp = "ucm_mcp.server:main"
 
 [build-system]
 requires = ["uv_build>=0.13.9,<0.14.0"]
@@ -30,6 +31,9 @@ dev = [
     "pytest>=8.0.0",
     "pytest-cov>=6.0.0",
 ]
+
+[tool.uv.build-backend]
+module-name = "ucm_mcp"
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]

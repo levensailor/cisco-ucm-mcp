@@ -1,11 +1,9 @@
-# ucm-mcp
+# cisco-ucm-mcp
 
 **Ask an agent “is SEP… registered, what’s its IP, and who’s logged in?” — it hits AXL + RIS in one tool call.**
 
 ```bash
-uv sync
-cp .env.example .env   # set UCM_HOST / UCM_USERNAME / UCM_PASSWORD
-uv run ucm-mcp
+uvx --from git+https://github.com/levensailor/cisco-ucm-mcp.git ucm-mcp
 ```
 
 Then ask Cursor: *phone status for SEPF8A5C59E0F1C*.
@@ -20,9 +18,27 @@ Then ask Cursor: *phone status for SEPF8A5C59E0F1C*.
 
 ## Quick Start
 
+### Run from Git (no clone)
+
 ```bash
-git clone https://github.com/levensailor/ucm-mcp.git
-cd ucm-mcp
+uvx --from git+https://github.com/levensailor/cisco-ucm-mcp.git ucm-mcp
+```
+
+Pass CUCM settings in the environment (or a `.env` in the working directory):
+
+```bash
+export UCM_HOST=10.10.20.1
+export UCM_USERNAME=axlaccess
+export UCM_PASSWORD=your-password
+export UCM_VERSION=15.0
+uvx --from git+https://github.com/levensailor/cisco-ucm-mcp.git ucm-mcp
+```
+
+### Clone and run locally
+
+```bash
+git clone https://github.com/levensailor/cisco-ucm-mcp.git
+cd cisco-ucm-mcp
 uv sync
 cp .env.example .env
 ```
@@ -42,16 +58,22 @@ Run:
 uv run ucm-mcp
 ```
 
+Or use the play button / `.run` file in Cursor, which runs the same command.
+
 ### Cursor MCP config
 
-Add to your Cursor `mcp.json`:
+**From Git (uvx):**
 
 ```json
 {
   "mcpServers": {
     "ucm": {
-      "command": "uv",
-      "args": ["run", "--directory", "/absolute/path/to/ucm-mcp", "ucm-mcp"],
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/levensailor/cisco-ucm-mcp.git",
+        "ucm-mcp"
+      ],
       "env": {
         "UCM_HOST": "10.10.20.1",
         "UCM_USERNAME": "axlaccess",
@@ -62,6 +84,32 @@ Add to your Cursor `mcp.json`:
   }
 }
 ```
+
+**From a local clone:**
+
+```json
+{
+  "mcpServers": {
+    "ucm": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--directory",
+        "/absolute/path/to/cisco-ucm-mcp",
+        "ucm-mcp"
+      ],
+      "env": {
+        "UCM_HOST": "10.10.20.1",
+        "UCM_USERNAME": "axlaccess",
+        "UCM_PASSWORD": "your-password",
+        "UCM_VERSION": "15.0"
+      }
+    }
+  }
+}
+```
+
+PyPI publishing (`uvx cisco-ucm-mcp`) is planned once credentials are available. Until then use the Git or local paths above.
 
 ## Safety gates
 
@@ -93,10 +141,12 @@ UCM_HTTP_HOST=127.0.0.1
 UCM_HTTP_PORT=8000
 ```
 
-No CI build artifacts or public URLs are required beyond this repository. Push to `main` runs pytest via GitHub Actions.
+Push to `main` runs pytest via GitHub Actions.
 
 ## Author
 
 [![Jeff Levensailor](https://img.shields.io/badge/author-Jeff%20Levensailor-0A66C2?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/jefflevensailor/)
 
 MIT-licensed MCP server wrapping [ciscoaxl](https://github.com/levensailor/ciscoaxl) plus reimplemented RIS, Control Center, Perfmon, Log Collection, CDR, phone web, and XSI clients.
+
+**Repo:** https://github.com/levensailor/cisco-ucm-mcp

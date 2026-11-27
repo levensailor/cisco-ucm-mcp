@@ -25,7 +25,7 @@ uv run pytest
 git push -u origin HEAD
 gh pr create --title "feat: short why" --body "$(cat <<'EOF'
 ## Summary
-- Why this change should land in ucm-mcp
+- Why this change should land in cisco-ucm-mcp
 
 ## Test plan
 - [ ] uv run pytest

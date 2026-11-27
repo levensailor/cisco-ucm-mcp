@@ -308,6 +308,45 @@ wheels = [
 ]
 
 [[package]]
+name = "cisco-ucm-mcp"
+version = "0.1.0"
+source = { editable = "." }
+dependencies = [
+    { name = "beautifulsoup4" },
+    { name = "ciscoaxl" },
+    { name = "lxml" },
+    { name = "mcp" },
+    { name = "pydantic-settings" },
+    { name = "requests" },
+    { name = "urllib3" },
+    { name = "zeep" },
+]
+
+[package.dev-dependencies]
+dev = [
+    { name = "pytest" },
+    { name = "pytest-cov" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "beautifulsoup4", specifier = ">=4.12.0" },
+    { name = "ciscoaxl", git = "https://github.com/levensailor/ciscoaxl.git" },
+    { name = "lxml", specifier = ">=5.0.0" },
+    { name = "mcp", specifier = ">=1.6.0" },
+    { name = "pydantic-settings", specifier = ">=2.7.0" },
+    { name = "requests", specifier = ">=2.32.0" },
+    { name = "urllib3", specifier = ">=2.0.0" },
+    { name = "zeep", specifier = ">=4.3.0" },
+]
+
+[package.metadata.requires-dev]
+dev = [
+    { name = "pytest", specifier = ">=8.0.0" },
+    { name = "pytest-cov", specifier = ">=6.0.0" },
+]
+
+[[package]]
 name = "ciscoaxl"
 version = "0.171"
 source = { git = "https://github.com/levensailor/ciscoaxl.git#4a7e7a9f3cb2384d336396d4dc1146c688599183" }
@@ -1383,45 +1422,6 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/ff/50/0195198eb1d75bab716bb0a813abea4cc394bfa17a92a189f021a34859af/typing_inspection-0.4.5.tar.gz", hash = "sha256:7f16c411e7930dc79596d42ab44672a3fe5f60eb34b781a1647e7872363120c7", size = 81194, upload-time = "2026-11-04T14:13:23.774Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/de/0c/ea2544850a7c135e15033a5c7a8e7211136184b7ae63e2239d557c2b3019/typing_inspection-0.4.5-py3-none-any.whl", hash = "sha256:bc210535442b39e1bf2805e0c7a17dfd6a4ace760c84c7f7d16245d23a6b1c39", size = 14874, upload-time = "2026-11-04T14:13:22.616Z" },
-]
-
-[[package]]
-name = "ucm-mcp"
-version = "0.1.0"
-source = { editable = "." }
-dependencies = [
-    { name = "beautifulsoup4" },
-    { name = "ciscoaxl" },
-    { name = "lxml" },
-    { name = "mcp" },
-    { name = "pydantic-settings" },
-    { name = "requests" },
-    { name = "urllib3" },
-    { name = "zeep" },
-]
-
-[package.dev-dependencies]
-dev = [
-    { name = "pytest" },
-    { name = "pytest-cov" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "beautifulsoup4", specifier = ">=4.12.0" },
-    { name = "ciscoaxl", git = "https://github.com/levensailor/ciscoaxl.git" },
-    { name = "lxml", specifier = ">=5.0.0" },
-    { name = "mcp", specifier = ">=1.6.0" },
-    { name = "pydantic-settings", specifier = ">=2.7.0" },
-    { name = "requests", specifier = ">=2.32.0" },
-    { name = "urllib3", specifier = ">=2.0.0" },
-    { name = "zeep", specifier = ">=4.3.0" },
-]
-
-[package.metadata.requires-dev]
-dev = [
-    { name = "pytest", specifier = ">=8.0.0" },
-    { name = "pytest-cov", specifier = ">=6.0.0" },
 ]
 
 [[package]]
